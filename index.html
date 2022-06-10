@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <p>Click the button to get your coordinates.</p>
+
+  <input type="text" id="locname" placeholder="Location name">
+  <button onclick="getLocation()">Try It</button>
+
+  <h2 id="locationName"></h2>
+  <p id="demo"></p>
+
+  <script>
+    var x = document.getElementById("demo");
+
+
+    function getLocation() {
+      document.getElementById("locationName").innerHTML = document.getElementById("locname").value;
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+    }
+  </script>
+  <!-- http://maps.google.de/maps?q=loc:18.5401344,73.8295808 -->
+</body>
+
+</html>
